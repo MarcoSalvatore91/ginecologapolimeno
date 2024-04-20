@@ -1,19 +1,31 @@
 <template>
   <section id="homepage">
-    <Header />
+    <Menu id="menu" />
+    <Jumbotron />
+    <Contacts />
+    <Visits />
   </section>
 </template>
 
 <script>
-import Header from '../components/HomePage/Header.vue'
+import Menu from '../components/Menu/Menu.vue'
+import Jumbotron from '../components/HomePage/Jumbotron.vue'
+import Contacts from '../components/HomePage/Contacts.vue'
+import Visits from '../components/HomePage/Visits.vue'
 
 export default {
   name: 'HomePage',
 
   components: {
-    Header
+    Menu,
+    Jumbotron,
+    Contacts,
+    Visits
   }
 }
 </script>
 
-<style></style>
+<style scoped lang="scss">
+#menu {
+}
+</style>
