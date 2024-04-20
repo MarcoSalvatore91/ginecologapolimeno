@@ -42,9 +42,6 @@ export default {
       padding-top: 0;
       padding-bottom: 0;
     }
-    .content-container-image:last-child {
-      padding-bottom: 0;
-    }
   }
 }
 </style>
