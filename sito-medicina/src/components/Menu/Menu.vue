@@ -6,7 +6,7 @@
         <img id="img-logo" src="@/assets/logo.svg" alt="logo" />
 
         <!-- HOME -->
-        <div class="col-xs-6">
+        <div class="col-xs-6" id="mobile-view">
           <div class="hamburger-wrap">
             <button class="hamburger" type="button" @click="openCloseSidebar">
               <span class="hamburger__line"></span>
@@ -15,19 +15,33 @@
             </button>
           </div>
         </div>
+
+        <!-- MENU -->
+        <div id="desktop-view">
+          <p>
+            <a href="#">home</a>
+          </p>
+          <p>
+            <a href="#">about</a>
+          </p>
+          <p>
+            <a href="#">contact</a>
+          </p>
+        </div>
       </div>
 
-      <!-- MENU -->
-      <div class="row dropdown" :class="{ 'dropdown-after': menuOpen }">
-        <p class="navlistitem">
-          <a href="#">home</a>
-        </p>
-        <p class="navlistitem">
-          <a href="#">about</a>
-        </p>
-        <p class="navlistitem">
-          <a href="#">contact</a>
-        </p>
+      <div>
+        <div class="row dropdown" :class="{ 'dropdown-after': menuOpen }">
+          <p class="navlistitem">
+            <a href="#">home</a>
+          </p>
+          <p class="navlistitem">
+            <a href="#">about</a>
+          </p>
+          <p class="navlistitem">
+            <a href="#">contact</a>
+          </p>
+        </div>
       </div>
     </header>
   </section>
@@ -52,6 +66,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+/* GENERAL */
+
+#desktop-view {
+  display: none;
+}
+
+/* GENERAL */
+
 #menu {
   #menu-container {
     display: flex;
@@ -104,23 +126,54 @@ export default {
     justify-content: space-around;
     overflow: hidden;
     position: fixed;
-    width: 100%;
-    .navlist {
-      list-style: none;
-      .navlistitem {
-        text-transform: uppercase;
-        text-align: center;
-        padding: 20px;
-      }
-      .navlistitem a {
-        color: #ffffff;
-      }
+    width: -webkit-fill-available;
+    .navlistitem {
+      text-transform: uppercase;
+      text-align: center;
+      margin: 0;
+    }
+    .navlistitem a {
+      color: #ffffff;
+      text-decoration: none;
     }
   }
 
   .dropdown-after {
     height: calc(30vh - 50px);
     transition: height 0.2s ease;
+  }
+}
+
+/* Responsive Desktop */
+
+@media only screen and (min-width: 769px) {
+  /* GENERAL */
+
+  #mobile-view {
+    display: none;
+  }
+
+  /* GENERAL */
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px;
+    #menu-container {
+      width: 100%;
+      #desktop-view {
+        display: flex;
+        align-items: center;
+        p {
+          padding: 0 20px;
+          a {
+            text-decoration: none;
+            text-transform: uppercase;
+            color: black;
+          }
+        }
+      }
+    }
   }
 }
 </style>
