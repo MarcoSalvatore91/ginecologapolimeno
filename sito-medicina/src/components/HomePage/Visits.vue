@@ -1,14 +1,16 @@
 <template>
   <section id="visits">
     <h1>Le Nostre Visite</h1>
-    <div class="visit-field" v-for="visit in visitList" :key="visit">
-      <div class="container-image"></div>
-      <h3 class="title-visit">{{ visit.title }}</h3>
-      <p class="text-visit">
-        {{ visit.content }}
-      </p>
-      <div class="btn-container">
-        <button class="router-btn">Scopri di più</button>
+    <div id="visits-field-container">
+      <div class="visit-field" v-for="visit in visitList" :key="visit">
+        <div class="container-image"></div>
+        <h3 class="title-visit">{{ visit.title }}</h3>
+        <p class="text-visit">
+          {{ visit.content }}
+        </p>
+        <div class="btn-container">
+          <button class="router-btn">Scopri di più</button>
+        </div>
       </div>
     </div>
   </section>
@@ -80,6 +82,20 @@ $main-color: rgb(173, 216, 230);
     }
     .btn-container {
       padding-top: 15px;
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .hidden {
+    display: none;
+  }
+  #visits {
+    h1 {
+      border-bottom: 0;
+    }
+    #visits-field-container {
+      display: flex;
     }
   }
 }
