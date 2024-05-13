@@ -1,17 +1,19 @@
 <template>
   <section id="blog">
-    <h2 id="title">Blog</h2>
+    <h2 id="title">Blog e News</h2>
     <p id="text-blog">
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit minus et saepe vitae asperiores
       impedit doloribus fuga labore nihil beatae! Pariatur, sint aspernatur. Assumenda aperiam neque
       inventore porro laborum itaque!
     </p>
-    <div class="content-article" v-for="blog in blogList" :key="blog">
-      <div class="image-article"></div>
-      <div class="info-article">
-        <h3 class="title-article">{{ blog.title }}</h3>
-        <p class="text-article">{{ blog.content }}</p>
-        <p class="router-article">CONTINUA A LEGGERE</p>
+    <div id="article-section">
+      <div class="content-article" v-for="blog in blogList" :key="blog">
+        <div class="image-article"></div>
+        <div class="info-article">
+          <h3 class="title-article">{{ blog.title }}</h3>
+          <p class="text-article">{{ blog.content }}</p>
+          <p class="router-article">CONTINUA A LEGGERE</p>
+        </div>
       </div>
     </div>
     <div id="container-btn-article">
@@ -82,6 +84,25 @@ export default {
     margin: 50px 0;
     display: flex;
     justify-content: center;
+  }
+}
+@media only screen and (min-width: 769px) {
+  #blog {
+    #text-blog {
+      margin-bottom: 50px;
+      text-align: left;
+      margin-left: 20px;
+    }
+    #article-section {
+      display: flex;
+      .content-article {
+        margin: 0 20px;
+        .image-article {
+          margin-top: 0;
+          margin-bottom: 20px;
+        }
+      }
+    }
   }
 }
 </style>
