@@ -42,4 +42,21 @@ export default {
     }
   }
 }
+@media only screen and (min-width: 769px) {
+  #biography {
+    #content-biography {
+      display: flex;
+      padding: 30px 150px;
+      #image-biography {
+        width: 50%;
+        height: 300px;
+        margin: 10px 20px;
+      }
+      #text-biography {
+        width: 50%;
+        margin: 10px 20px;
+      }
+    }
+  }
+}
 </style>
