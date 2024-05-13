@@ -44,6 +44,7 @@ export default {
 }
 @media only screen and (min-width: 769px) {
   #biography {
+    margin-top: 80px;
     #content-biography {
       display: flex;
       padding: 30px 150px;
