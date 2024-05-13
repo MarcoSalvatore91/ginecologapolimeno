@@ -29,8 +29,8 @@ export default {
 
 <style scoped lang="scss">
 #jumbotron {
+  background-color: lightgrey;
   #container-image {
-    background-color: lightgrey;
     align-content: center;
     align-items: center;
     padding: 15px 20px 15px 20px;
@@ -41,6 +41,22 @@ export default {
     .content-container-image:first-child {
       padding-top: 0;
       padding-bottom: 0;
+    }
+  }
+}
+
+/* Responsive Desktop */
+
+@media only screen and (min-width: 769px) {
+  #jumbotron {
+    #container-image {
+      width: 80%;
+      padding: 50px 200px;
+      text-align: left;
+      .content-container-image {
+      }
+      .content-container-image:first-child {
+      }
     }
   }
 }

@@ -10,12 +10,12 @@
         </div>
       </div>
     </div>
-    <div class="contacts-timetable-section">
+    <div>
       <div class="contacts-timetable-container">
         <h3 class="title">Chiama</h3>
         <div class="contact-details">
           <div>
-            <p>
+            <p class="hidden">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fugit corporis ab eius
               illo placeat perspiciatis dignissimos explicabo?
             </p>
@@ -69,6 +69,31 @@ export default {
       }
       .details {
         padding-right: 5px;
+      }
+    }
+  }
+}
+
+/* Responsive Desktop */
+
+@media only screen and (min-width: 769px) {
+  .hidden {
+    display: none;
+  }
+  section.contacts-timetable-section {
+    display: flex;
+    border: 5px solid rgb(173, 216, 230);
+    margin: 30px 190px;
+    div {
+      width: 100%;
+      border-bottom: none;
+      .contacts-timetable-container {
+        border-bottom: 0;
+        .contact-details {
+          p:last-child {
+            padding-bottom: 0;
+          }
+        }
       }
     }
   }
