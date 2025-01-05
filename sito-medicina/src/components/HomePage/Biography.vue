@@ -35,7 +35,7 @@ export default {
     #image-biography {
       margin: 30px 0;
       height: 200px;
-      background-color: rgb(173, 216, 230);
+      background-color: #fdc8eb66;
     }
     #text-biography {
       margin-bottom: 30px;

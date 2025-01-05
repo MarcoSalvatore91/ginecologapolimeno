@@ -74,7 +74,7 @@ export default {
       }
       .router-article {
         font-weight: 900;
-        color: rgb(173, 216, 230);
+        color: #fdc8eb66;
         padding-bottom: 15px;
         cursor: pointer;
       }

@@ -2,11 +2,11 @@
   <section class="contacts-timetable-section">
     <div>
       <div class="contacts-timetable-container">
-        <h3 class="title">Orari</h3>
+        <h3 class="title">Eseguo visite presso numerosi studi su territorio romano</h3>
         <div class="timetables">
-          <p><span>Martedí</span> – 15:00/19:00,</p>
-          <p><span>Mercoledí</span> – 09:00/13:00-14:00/18:00</p>
-          <p><span>Giovedí</span> – 09:00/13:00-14:00/18:00</p>
+          <p>Via Canova n. 228</p>
+          <p>Via Salvo d'Acquisto n. 329</p>
+          <p>Via Firenze n. 29</p>
         </div>
       </div>
     </div>
@@ -24,11 +24,16 @@
             <p><span>Per prenotazioni</span></p>
           </div>
           <div>
-            <p><span class="details">Tel:</span><a href="tel:0000000">0000000</a></p>
-            <p><span class="details">Whatsapp:</span><a href="https://wa.me/0000000">0000000</a></p>
+            <p><span class="details">Tel:</span><a href="tel:3514959696">3514959696</a></p>
+            <p>
+              <span class="details">Whatsapp:</span
+              ><a href="https://wa.me/3514959696">3514959696</a>
+            </p>
             <p>
               <span class="details">Email:</span
-              ><a href="mailto:marco@gmail.com">marco@gmail.com</a>
+              ><a id="e-mail" href="mailto:teresapolimeno.ginecologia@outlook.it"
+                >teresapolimeno.ginecologia@outlook.it</a
+              >
             </p>
           </div>
         </div>
@@ -52,11 +57,11 @@ export default {
 <style scoped lang="scss">
 .contacts-timetable-section {
   .contacts-timetable-container {
-    border-bottom: 5px solid rgb(173, 216, 230);
+    border-bottom: 5px solid #fdc8eb66;
     margin: 0 15px;
     margin: 25px 40px;
     .title {
-      color: rgb(173, 216, 230);
+      color: #fdc8eb66;
       padding-bottom: 10px;
     }
     .timetables,
@@ -66,6 +71,9 @@ export default {
       }
       p:last-child {
         padding-bottom: 25px;
+        #e-mail {
+          word-wrap: break-word;
+        }
       }
       .details {
         padding-right: 5px;
@@ -82,7 +90,7 @@ export default {
   }
   section.contacts-timetable-section {
     display: flex;
-    border: 5px solid rgb(173, 216, 230);
+    border: 5px solid #fdc8eb66;
     margin: 30px 190px;
     div {
       width: 100%;

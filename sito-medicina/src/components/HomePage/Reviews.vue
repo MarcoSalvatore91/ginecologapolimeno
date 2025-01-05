@@ -78,8 +78,9 @@ export default {
 
 <style scoped lang="scss">
 #reviews {
+  margin-top: 50px;
   #info-review {
-    border-top: 5px solid rgb(173, 216, 230);
+    border-top: 5px solid #fdc8eb66;
     margin: 25px 40px;
     #reviews-container {
       margin: 30px 0;
@@ -101,7 +102,7 @@ export default {
     padding: 10px 20px;
     div:first-child {
       padding: 20px 0;
-      border-bottom: 1px solid rgb(173, 216, 230);
+      border-bottom: 1px solid #fdc8eb66;
     }
     div:nth-child(2) {
       padding: 20px 0;

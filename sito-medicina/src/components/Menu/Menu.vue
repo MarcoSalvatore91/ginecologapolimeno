@@ -21,9 +21,9 @@
           <p>
             <a href="#">home</a>
           </p>
-          <p>
+          <!-- <p>
             <a href="#">about</a>
-          </p>
+          </p> -->
           <p>
             <a href="#">contact</a>
           </p>

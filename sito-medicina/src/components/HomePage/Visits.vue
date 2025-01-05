@@ -1,6 +1,6 @@
 <template>
   <section id="visits">
-    <h1>Le Nostre Visite</h1>
+    <h1>Prestazioni Eseguite</h1>
     <div id="visits-field-container">
       <div class="visit-field" v-for="visit in visitList" :key="visit">
         <div class="container-image"></div>
@@ -8,9 +8,9 @@
         <p class="text-visit">
           {{ visit.content }}
         </p>
-        <div class="btn-container">
+        <!-- <div class="btn-container">
           <button class="router-btn">Scopri di più</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$main-color: rgb(173, 216, 230);
+$main-color: #fdc8eb66;
 
 #visits {
   margin: 0 20px;
