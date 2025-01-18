@@ -47,7 +47,7 @@ export default {
       margin: 30px 0 50px 0;
       height: 200px;
       h4 {
-        color: #fdc8eb66;
+        color: #d97cb1;
       }
       p {
         color: white;
@@ -55,6 +55,12 @@ export default {
     }
     #text-footer {
       margin-bottom: 30px;
+      h2 {
+        color: #d97cb1;
+      }
+      p {
+        color: white;
+      }
     }
   }
 }

@@ -12,7 +12,7 @@
     </div>
     <div>
       <div class="contacts-timetable-container">
-        <h3 class="title">Chiama</h3>
+        <h3 class="title">Contatti</h3>
         <div class="contact-details">
           <div>
             <p class="hidden">
@@ -61,7 +61,7 @@ export default {
     margin: 0 15px;
     margin: 25px 40px;
     .title {
-      color: #fdc8eb66;
+      color: #d97cb1;
       padding-bottom: 10px;
     }
     .timetables,
@@ -77,6 +77,10 @@ export default {
       }
       .details {
         padding-right: 5px;
+      }
+      a:hover {
+        background-color: transparent;
+        color: #d97cb1;
       }
     }
   }

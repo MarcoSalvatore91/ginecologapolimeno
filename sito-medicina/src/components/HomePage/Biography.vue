@@ -39,6 +39,7 @@ export default {
     }
     #text-biography {
       margin-bottom: 30px;
+      color: white;
     }
   }
 }

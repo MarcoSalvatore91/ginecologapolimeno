@@ -19,13 +19,13 @@
         <!-- MENU -->
         <div id="desktop-view">
           <p>
-            <a href="#">home</a>
+            <router-link to="/">home</router-link>
           </p>
           <!-- <p>
-            <a href="#">about</a>
-          </p> -->
+        <router-link to="/about">about</router-link>
+      </p> -->
           <p>
-            <a href="#">contact</a>
+            <router-link to="/contacts">Contatti</router-link>
           </p>
         </div>
       </div>
@@ -33,13 +33,13 @@
       <div>
         <div class="row dropdown" :class="{ 'dropdown-after': menuOpen }">
           <p class="navlistitem">
-            <a href="#">home</a>
+            <router-link to="/">home</router-link>
           </p>
-          <p class="navlistitem">
+          <!-- <p class="navlistitem">
             <a href="#">about</a>
-          </p>
+          </p> -->
           <p class="navlistitem">
-            <a href="#">contact</a>
+            <router-link to="/contacts">Contatti</router-link>
           </p>
         </div>
       </div>
@@ -92,7 +92,7 @@ export default {
       .hamburger {
         width: 45px;
         height: 45px;
-        background-color: lightblue;
+        background-color: transparent;
         border-radius: 4px;
         border: none;
       }
@@ -102,9 +102,9 @@ export default {
       .hamburger__line,
       .hamburger__middle {
         display: block;
-        height: 2px;
+        height: 5px;
         border-radius: 2px;
-        background-color: #ffffff;
+        background-color: #fdc8eb;
         margin-top: 7px;
         margin-bottom: 7px;
       }
@@ -118,7 +118,7 @@ export default {
 
   .dropdown {
     height: 0px;
-    background-color: red;
+    background-color: #fdc8eb;
     transition: height 0.2s ease;
     display: flex;
     flex-direction: column;
@@ -133,8 +133,9 @@ export default {
       margin: 0;
     }
     .navlistitem a {
-      color: #ffffff;
+      color: black;
       text-decoration: none;
+      font-size: 20px;
     }
   }
 
@@ -170,6 +171,12 @@ export default {
             text-decoration: none;
             text-transform: uppercase;
             color: black;
+          }
+        }
+        p:hover {
+          a:hover {
+            background-color: transparent;
+            color: #d97cb1;
           }
         }
       }

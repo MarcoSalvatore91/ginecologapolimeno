@@ -66,6 +66,7 @@ $main-color: #fdc8eb66;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 10px;
     .container-image {
       margin-top: 70px;
       height: 100px;
@@ -74,7 +75,7 @@ $main-color: #fdc8eb66;
       background-color: $main-color;
     }
     .title-visit {
-      color: $main-color;
+      color: #d97cb1;
       padding: 15px 0;
     }
     .text-visit {

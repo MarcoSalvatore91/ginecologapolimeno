@@ -30,6 +30,7 @@ export default {
 <style scoped lang="scss">
 #jumbotron {
   background-color: lightgrey;
+  color: white;
   #container-image {
     align-content: center;
     align-items: center;
@@ -53,7 +54,14 @@ export default {
       width: 80%;
       padding: 50px 200px;
       text-align: left;
-      .content-container-image {
+      .content-container-image .router-btn {
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+      .content-container-image .router-btn:hover {
+        color: white;
+        background-color: #d97cb1;
       }
       .content-container-image:first-child {
       }
