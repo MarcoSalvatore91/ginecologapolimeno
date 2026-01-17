@@ -1,26 +1,30 @@
 <template>
-  <section id="jumbotron">
+  <section id="jumbotron" :style="{ backgroundImage: `url(${tracyImage})` }">
     <div id="container-image">
       <h2 class="content-container-image">Dr. Teresa Polimeno</h2>
-      <h3 class="content-container-image">Ginecologa</h3>
-      <p class="content-container-image">
+      <h3 class="content-container-image">Specialista in Ginecologia  e Ostetricia</h3>
+      <!-- <p class="content-container-image">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus tempora fugit voluptas
         esse neque eum aliquid quia explicabo sint iusto eligendi odio numquam quisquam similique
         eos, quo voluptates quas ex.
-      </p>
-      <div class="content-container-image">
+      </p> -->
+      <!-- <div class="content-container-image">
         <button class="router-btn">Scopri di più</button>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
 
 <script>
+import tracyImage from '@/assets/images/tracy.jpg'
+
 export default {
   name: 'Jumbotron',
 
   data() {
-    return {}
+    return {
+      tracyImage
+    }
   },
 
   methods: {}
@@ -30,6 +34,9 @@ export default {
 <style scoped lang="scss">
 #jumbotron {
   background-color: lightgrey;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   #container-image {
     align-content: center;

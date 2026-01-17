@@ -3,7 +3,9 @@
     <header>
       <div id="menu-container">
         <!-- LOGO -->
-        <img id="img-logo" src="@/assets/logo.svg" alt="logo" />
+        <router-link id="img-logo-container" to="/"
+          ><img id="img-logo" src="@/assets/logo.svg" alt="logo"
+        /></router-link>
 
         <!-- HOME -->
         <div class="col-xs-6" id="mobile-view">
@@ -82,6 +84,9 @@ export default {
     #img-logo {
       height: 45px;
     }
+    #img-logo-container:hover {
+      background-color: transparent;
+    }
     .hamburger-wrap {
       width: 100px;
       height: 100%;
@@ -159,7 +164,8 @@ export default {
   header {
     display: flex;
     justify-content: space-between;
-    margin: 0 50px;
+    padding: 0 50px;
+    box-shadow: 0px 0px 24px 0px rgba(0, 0, 0, 0.15);
     #menu-container {
       width: 100%;
       #desktop-view {

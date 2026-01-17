@@ -13,10 +13,12 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "bootstrap": "^5.3.3",
     "bootstrap-icons-vue": "^1.11.3",
     "bootstrap-vue": "^2.23.1",
     "bootstrap-vue-3": "^0.3.12",
+    "emailjs-com": "^3.2.0",
     "pinia": "^2.1.7",
     "vue": "^3.4.23",
     "vue-router": "^4.0.13",

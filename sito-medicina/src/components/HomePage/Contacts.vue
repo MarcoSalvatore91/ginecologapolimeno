@@ -2,11 +2,24 @@
   <section class="contacts-timetable-section">
     <div>
       <div class="contacts-timetable-container">
-        <h3 class="title">Eseguo visite presso numerosi studi su territorio romano</h3>
+        <h3 class="title">Ricevo presso</h3>
         <div class="timetables">
-          <p>Via Canova n. 228</p>
-          <p>Via Salvo d'Acquisto n. 329</p>
-          <p>Via Firenze n. 29</p>
+          <p>Ospedale Cristo Re, Via delle Calasanziane 25, 00167 Roma</p>
+          <p>Mizar Medicina Specialistica, via Fosso dell’Osa , 603/605,  000132 Roma</p>
+        </div>
+      </div>
+      <div class="contacts-timetable-container">
+        <h3 class="title">Contatti Personali</h3>
+        <div class="contact-details">
+          <div>
+            <p><span class="details">Telefono</span><a href="tel:3514959696">3514959696</a></p>
+            <p>
+              <span class="details">E-mail</span
+              ><a id="e-mail" href="mailto:teresapolimeno.ginecologia@outlook.it"
+                >teresapolimeno.ginecologia@outlook.it</a
+              >
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -24,16 +37,27 @@
             <p><span>Per prenotazioni</span></p>
           </div>
           <div>
-            <p><span class="details">Tel:</span><a href="tel:3514959696">3514959696</a></p>
             <p>
-              <span class="details">Whatsapp:</span
-              ><a href="https://wa.me/3514959696">3514959696</a>
+              <span class="font-normal">Intramoenia presso Ospedale Cristo Re</span>
             </p>
             <p>
+              <span class="details">Sito</span
+              ><a href="https://ospedalecristore.it" target="_blank" rel="noopener noreferrer"
+                >https://ospedalecristore.it</a
+              >
+            </p>
+            <p><span class="details">Telefono</span><a href="tel:+3906612451">+3906612451</a></p>
+            <!-- <p>
               <span class="details">Email:</span
               ><a id="e-mail" href="mailto:teresapolimeno.ginecologia@outlook.it"
                 >teresapolimeno.ginecologia@outlook.it</a
               >
+            </p> -->
+            <p>
+              <span class="font-normal">Mizar Medicina Specialistica</span>
+            </p>
+            <p>
+              <span class="details">Telefono</span><a href="tel:+390659879859">+39 0659879859</a>
             </p>
           </div>
         </div>
@@ -77,6 +101,9 @@ export default {
       }
       .details {
         padding-right: 5px;
+      }
+      .font-normal {
+        font-weight: normal;
       }
       a:hover {
         background-color: transparent;

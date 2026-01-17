@@ -12,6 +12,11 @@ const router = createRouter({
       path: '/contacts',
       name: 'contacts',
       component: () => import(/* webpackChunkName: "home" */ '../views/ContactPage.vue')
+    },
+    {
+      path: '/privacy-policy',
+      name: 'privacy-policy',
+      component: () => import(/* webpackChunkName: "home" */ '../views/PrivacyPolicy.vue')
     }
   ]
 })

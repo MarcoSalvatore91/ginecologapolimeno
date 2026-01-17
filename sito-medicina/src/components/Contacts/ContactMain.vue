@@ -20,24 +20,70 @@
         </p>
       </div>
     </div>
-    <div id="contact-form" class="contact-section">
-      <input type="text" placeholder="Nome" />
-      <input type="email" placeholder="Email" />
-      <textarea type="message" placeholder="Messaggio"></textarea>
+    <form id="contact-form" class="contact-section" @submit.prevent="sendEmail">
+      <input type="text" v-model="formData.name" placeholder="Nome" id="name" required />
+      <input type="email" v-model="formData.email" placeholder="Email" id="email" required />
+      <textarea
+        type="message"
+        v-model="formData.message"
+        placeholder="Messaggio"
+        id="message"
+      ></textarea>
       <div>
-        <input type="checkbox" style="margin-right: 10px" />
-        <span>Acconsento alla nostra informativa sulla <a href="">privacy</a></span>
+        <input type="checkbox" style="margin-right: 10px" required />
+        <span
+          >Acconsento alla nostra informativa sulla
+          <router-link id="privacy-policy" to="/privacy-policy">privacy</router-link></span
+        >
       </div>
-      <button>Invia</button>
-    </div>
+      <button type="submit">Invia</button>
+    </form>
   </section>
 </template>
 
 <script>
+import emailjs from '@emailjs/browser'
+
 export default {
   name: 'ContactMain',
 
-  components: {}
+  data() {
+    return {
+      formData: {
+        name: '',
+        email: '',
+        message: ''
+      },
+      statusMessage: ''
+    }
+  },
+
+  components: {},
+
+  methods: {
+    async sendEmail() {
+      const { name, email, message } = this.formData
+      const templateParams = {
+        name: name,
+        email: email,
+        message: message
+      }
+
+      try {
+        const response = await emailjs.send(
+          'service_gbgnn3r', // Sostituisci con il tuo Service ID
+          'template_2d0vnsz', // Sostituisci con il tuo Template ID
+          templateParams,
+          'kte2FiiFN9M-l4fsh' // Sostituisci con la tua Public Key
+        )
+        this.statusMessage = 'Email inviata con successo!'
+        console.log('SUCCESS:', response)
+      } catch (error) {
+        this.statusMessage = "Errore durante l'invio dell'email."
+        console.error('FAILED:', error)
+      }
+    }
+  }
 }
 </script>
 
@@ -90,6 +136,13 @@ export default {
       border-radius: 5px;
       cursor: pointer;
       width: 100px;
+    }
+    #privacy-policy {
+      color: #d97cb1;
+      text-decoration: none;
+    }
+    #privacy-policy:hover {
+      background-color: transparent;
     }
   }
 }
