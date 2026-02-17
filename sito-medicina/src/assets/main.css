@@ -6,27 +6,27 @@
 }
 
 h1 {
-  font-size: 35px;
+  font-size: 36px;
   font-weight: bold;
 }
 
 h2 {
-  font-size: 30px;
+  font-size: 31px;
   font-weight: bold;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: bold;
 }
 
 p {
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .router-btn {
   padding: 10px 30px;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: bold;
   border: 0;
   border-radius: 5px;
@@ -35,14 +35,12 @@ p {
 a,
 .green {
   text-decoration: none;
-  color: #fdc8eb66;
-  transition: 0.4s;
-  padding: 3px;
+  transition: color 0.2s ease;
 }
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: transparent;
   }
 }
 

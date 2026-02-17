@@ -1,48 +1,82 @@
 <template>
   <section id="contact-main-section">
-    <div class="contact-section">
-      <p>
-        Per ricevere maggiori informazioni sui prodotti e servizi, non esitare a scrivermi via mail
-        o compila il form di contatto. Sarete ricontattati al più presto.
-      </p>
-      <p>oppure</p>
-      <p>Prenota tramite uno dei seguenti contatti:</p>
-      <div class="contact-details">
-        <p><span class="details">Tel:</span><a href="tel:3514959696">3514959696</a></p>
-        <p>
-          <span class="details">Whatsapp:</span><a href="https://wa.me/3514959696">3514959696</a>
+    <div class="contact-main-wrap">
+      <div class="contact-info">
+        <p class="contact-intro">
+          Per ricevere maggiori informazioni sui prodotti e servizi, non esitare a scrivermi via mail
+          o compila il form di contatto. Sarete ricontattati al più presto.
         </p>
-        <p>
-          <span class="details">Email:</span
-          ><a id="e-mail" href="mailto:teresapolimeno.ginecologia@outlook.it"
-            >teresapolimeno.ginecologia@outlook.it</a
-          >
-        </p>
+        <p class="contact-oppure">oppure</p>
+        <p class="contact-subtitle">Prenota tramite uno dei seguenti contatti:</p>
+        <div class="contact-details">
+          <p><span class="details">Tel:</span> <a href="tel:3514959696">351 495 9696</a></p>
+          <p>
+            <span class="details">Whatsapp:</span>
+            <a href="https://wa.me/393514959696" target="_blank" rel="noopener noreferrer"
+              >351 495 9696</a
+            >
+          </p>
+          <p>
+            <span class="details">Email:</span>
+            <a href="mailto:teresapolimeno.ginecologia@outlook.it"
+              >teresapolimeno.ginecologia@outlook.it</a
+            >
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form id="contact-form" @submit.prevent="sendEmail">
+          <input
+            type="text"
+            v-model="formData.name"
+            placeholder="Nome"
+            id="name"
+            required
+            autocomplete="name"
+          />
+          <input
+            type="email"
+            v-model="formData.email"
+            placeholder="Email"
+            id="email"
+            required
+            autocomplete="email"
+          />
+          <textarea
+            v-model="formData.message"
+            placeholder="Messaggio"
+            id="message"
+            rows="4"
+          ></textarea>
+          <div class="privacy-row">
+            <input type="checkbox" id="privacy-check" required />
+            <label for="privacy-check">
+              Acconsento alla nostra informativa sulla
+              <router-link to="/privacy-policy">privacy</router-link>
+            </label>
+          </div>
+          <p v-if="statusMessage" class="form-status" :class="statusType">
+            {{ statusMessage }}
+          </p>
+          <button type="submit" class="btn-invia" :disabled="sending">
+            {{ sending ? 'Invio in corso...' : 'Invia' }}
+          </button>
+        </form>
       </div>
     </div>
-    <form id="contact-form" class="contact-section" @submit.prevent="sendEmail">
-      <input type="text" v-model="formData.name" placeholder="Nome" id="name" required />
-      <input type="email" v-model="formData.email" placeholder="Email" id="email" required />
-      <textarea
-        type="message"
-        v-model="formData.message"
-        placeholder="Messaggio"
-        id="message"
-      ></textarea>
-      <div>
-        <input type="checkbox" style="margin-right: 10px" required />
-        <span
-          >Acconsento alla nostra informativa sulla
-          <router-link id="privacy-policy" to="/privacy-policy">privacy</router-link></span
-        >
-      </div>
-      <button type="submit">Invia</button>
-    </form>
   </section>
 </template>
 
 <script>
 import emailjs from '@emailjs/browser'
+
+const EMAILJS_SERVICE = 'service_gbgnn3r'
+const EMAILJS_TEMPLATE = 'template_2d0vnsz'
+const EMAILJS_PUBLIC_KEY = 'kte2FiiFN9M-l4fsh'
+// Template per notifica errori: crea su EmailJS un template con variabili {{error_message}}, {{name}}, {{email}}, {{message}}
+// e inserisci qui l'ID (es. 'template_xxxxx'). Lascia vuoto per disattivare l'email in caso di errore.
+const EMAILJS_ERROR_TEMPLATE = ''
 
 export default {
   name: 'ContactMain',
@@ -54,33 +88,60 @@ export default {
         email: '',
         message: ''
       },
-      statusMessage: ''
+      statusMessage: '',
+      statusType: '',
+      sending: false
     }
   },
 
   components: {},
 
   methods: {
-    async sendEmail() {
-      const { name, email, message } = this.formData
-      const templateParams = {
-        name: name,
-        email: email,
-        message: message
+    async sendErrorNotification(error, templateParams) {
+      if (!EMAILJS_ERROR_TEMPLATE) return
+      try {
+        await emailjs.send(
+          EMAILJS_SERVICE,
+          EMAILJS_ERROR_TEMPLATE,
+          {
+            error_message: error?.message || String(error),
+            name: templateParams.name,
+            email: templateParams.email,
+            message: templateParams.message
+          },
+          EMAILJS_PUBLIC_KEY
+        )
+      } catch (e) {
+        console.error('Invio email di errore fallito:', e)
       }
+    },
+
+    async sendEmail() {
+      this.statusMessage = ''
+      this.statusType = ''
+      this.sending = true
+
+      const { name, email, message } = this.formData
+      const templateParams = { name, email, message }
 
       try {
-        const response = await emailjs.send(
-          'service_gbgnn3r', // Sostituisci con il tuo Service ID
-          'template_2d0vnsz', // Sostituisci con il tuo Template ID
+        await emailjs.send(
+          EMAILJS_SERVICE,
+          EMAILJS_TEMPLATE,
           templateParams,
-          'kte2FiiFN9M-l4fsh' // Sostituisci con la tua Public Key
+          EMAILJS_PUBLIC_KEY
         )
-        this.statusMessage = 'Email inviata con successo!'
-        console.log('SUCCESS:', response)
+        this.statusMessage = 'Messaggio inviato con successo. Sarai ricontattato al più presto.'
+        this.statusType = 'success'
+        this.formData = { name: '', email: '', message: '' }
       } catch (error) {
-        this.statusMessage = "Errore durante l'invio dell'email."
-        console.error('FAILED:', error)
+        this.statusMessage =
+          "Impossibile inviare il messaggio. Controlla la connessione o riprova più tardi."
+        this.statusType = 'error'
+        console.error('EmailJS error:', error)
+        await this.sendErrorNotification(error, templateParams)
+      } finally {
+        this.sending = false
       }
     }
   }
@@ -88,62 +149,169 @@ export default {
 </script>
 
 <style scoped lang="scss">
+$accent: #d97cb1;
+
 #contact-main-section {
+  padding: 40px 20px 64px;
+  background: #fff;
+}
+
+.contact-main-wrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  width: 100%;
   display: flex;
-  justify-content: center;
-  .contact-section {
-    width: 40%;
-    margin-top: 30px;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.contact-info {
+  p {
+    margin: 0 0 12px;
+    color: #2c2c2c;
+    font-size: 1rem;
+    line-height: 1.6;
   }
-  .contact-details {
-    p span {
-      font-weight: bold;
+  .contact-intro {
+    margin-bottom: 16px;
+  }
+  .contact-oppure {
+    font-weight: 600;
+    color: #555;
+  }
+  .contact-subtitle {
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+}
+
+.contact-details {
+  p {
+    margin: 0 0 8px;
+  }
+  .details {
+    font-weight: 600;
+    margin-right: 6px;
+    color: #2c2c2c;
+  }
+  a {
+    color: #2c2c2c;
+    text-decoration: none;
+    word-break: break-all;
+    transition: color 0.2s;
+  }
+  a:hover {
+    color: $accent;
+  }
+}
+
+.contact-form-wrap {
+  background: #fafafa;
+  border-radius: 16px;
+  padding: 32px 24px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  input[type='text'],
+  input[type='email'],
+  textarea {
+    width: 100%;
+    margin: 0 0 16px;
+    padding: 14px 16px;
+    border: 1px solid rgba($accent, 0.35);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+  }
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: $accent;
+    box-shadow: 0 0 0 3px rgba($accent, 0.15);
+  }
+  textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .privacy-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+    color: #555;
+    label {
+      cursor: pointer;
     }
-    p:last-child {
-      padding-bottom: 25px;
-      #e-mail {
-        word-wrap: break-word;
-      }
-    }
-    .details {
-      padding-right: 5px;
+    a {
+      color: $accent;
+      text-decoration: none;
+      font-weight: 500;
     }
     a:hover {
-      background-color: transparent;
-      color: #d97cb1;
+      text-decoration: underline;
     }
   }
-  #contact-form {
-    display: flex;
-    flex-direction: column;
-    input {
-      margin: 10px 0;
-      padding: 10px;
-      border: 1px solid #d97cb1;
+
+  .form-status {
+    margin: 0 0 16px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    &.success {
+      background: rgba(76, 175, 80, 0.12);
+      color: #2e7d32;
     }
-    textarea {
-      margin: 10px 0;
-      padding: 10px;
-      height: 100px;
-      border: 1px solid #d97cb1;
+    &.error {
+      background: rgba(244, 67, 54, 0.1);
+      color: #c62828;
     }
-    button {
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #d97cb1;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 100px;
-    }
-    #privacy-policy {
-      color: #d97cb1;
-      text-decoration: none;
-    }
-    #privacy-policy:hover {
-      background-color: transparent;
-    }
+  }
+
+  .btn-invia {
+    padding: 14px 28px;
+    background: $accent;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+    align-self: flex-start;
+  }
+  .btn-invia:hover:not(:disabled) {
+    background: darken($accent, 8%);
+  }
+  .btn-invia:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .contact-main-wrap {
+    flex-direction: row;
+    align-items: center;
+    gap: 48px;
+  }
+
+  .contact-info {
+    flex: 0 0 42%;
+  }
+
+  .contact-form-wrap {
+    flex: 1;
+    padding: 36px 32px;
   }
 }
 </style>

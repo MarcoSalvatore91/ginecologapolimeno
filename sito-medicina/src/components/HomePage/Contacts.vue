@@ -1,64 +1,53 @@
 <template>
-  <section class="contacts-timetable-section">
-    <div>
-      <div class="contacts-timetable-container">
-        <h3 class="title">Ricevo presso</h3>
-        <div class="timetables">
-          <p>Ospedale Cristo Re, Via delle Calasanziane 25, 00167 Roma</p>
-          <p>Mizar Medicina Specialistica, via Fosso dell’Osa , 603/605,  000132 Roma</p>
+  <section class="contacts-section">
+    <div class="contacts-wrapper">
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <b-icon-geo-alt-fill class="contact-icon" />
+          <h3 class="contact-title">Ricevo presso</h3>
         </div>
-      </div>
-      <div class="contacts-timetable-container">
-        <h3 class="title">Contatti Personali</h3>
-        <div class="contact-details">
-          <div>
-            <p><span class="details">Telefono</span><a href="tel:3514959696">3514959696</a></p>
-            <p>
-              <span class="details">E-mail</span
-              ><a id="e-mail" href="mailto:teresapolimeno.ginecologia@outlook.it"
-                >teresapolimeno.ginecologia@outlook.it</a
-              >
-            </p>
+        <div class="contact-card-list">
+          <div class="location-block">
+            <p class="location-name">Ospedale Cristo Re</p>
+            <p class="contact-detail">Via delle Calasanziane 25, 00167 Roma</p>
+          </div>
+          <div class="location-block">
+            <p class="location-name">Mizar Studio Specialistico</p>
+            <p class="contact-detail">Via Fosso dell'Osa 603/605, 00132 Roma</p>
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <div class="contacts-timetable-container">
-        <h3 class="title">Contatti</h3>
-        <div class="contact-details">
-          <div>
-            <p class="hidden">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Id fugit corporis ab eius
-              illo placeat perspiciatis dignissimos explicabo?
-            </p>
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <b-icon-envelope-fill class="contact-icon" />
+          <h3 class="contact-title">Contatti</h3>
+        </div>
+        <div class="contact-card-list">
+          <div class="contact-line">
+            <span class="contact-label">Ospedale Cristo Re</span>
+            <a href="tel:+3906612451">+39 066 12451</a>
           </div>
-          <div>
-            <p><span>Per prenotazioni</span></p>
+          <div class="contact-line">
+            <span class="contact-label">Mizar</span>
+            <a href="tel:+390659879859">+39 065 9879859</a>
           </div>
-          <div>
-            <p>
-              <span class="font-normal">Intramoenia presso Ospedale Cristo Re</span>
-            </p>
-            <p>
-              <span class="details">Sito</span
-              ><a href="https://ospedalecristore.it" target="_blank" rel="noopener noreferrer"
-                >https://ospedalecristore.it</a
-              >
-            </p>
-            <p><span class="details">Telefono</span><a href="tel:+3906612451">+3906612451</a></p>
-            <!-- <p>
-              <span class="details">Email:</span
-              ><a id="e-mail" href="mailto:teresapolimeno.ginecologia@outlook.it"
-                >teresapolimeno.ginecologia@outlook.it</a
-              >
-            </p> -->
-            <p>
-              <span class="font-normal">Mizar Medicina Specialistica</span>
-            </p>
-            <p>
-              <span class="details">Telefono</span><a href="tel:+390659879859">+39 0659879859</a>
-            </p>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <b-icon-telephone-fill class="contact-icon" />
+          <h3 class="contact-title">Contatti personali</h3>
+        </div>
+        <div class="contact-card-list">
+          <div class="contact-line">
+            <span class="contact-label">Telefono</span>
+            <a href="tel:3514959696">351 495 9696</a>
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Email</span>
+            <a href="mailto:teresapolimeno.ginecologia@outlook.it"
+              >teresapolimeno.ginecologia@outlook.it</a
+            >
           </div>
         </div>
       </div>
@@ -79,62 +68,143 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.contacts-timetable-section {
-  .contacts-timetable-container {
-    border-bottom: 5px solid #fdc8eb66;
-    margin: 0 15px;
-    margin: 25px 40px;
-    .title {
-      color: #d97cb1;
-      padding-bottom: 10px;
+$accent: #d97cb1;
+
+.contacts-section {
+  padding: 0 20px 48px;
+  margin-top: -52px;
+  position: relative;
+  z-index: 2;
+}
+
+.contacts-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  padding: 18px 24px;
+  min-height: 200px;
+  transition: box-shadow 0.25s ease;
+
+  h3,
+  p,
+  .contact-line > * {
+    margin: 0;
+    padding: 0;
+  }
+  .contact-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .contact-icon {
+    width: 28px;
+    height: 28px;
+    color: $accent;
+    margin: 0;
+    display: block;
+  }
+  .contact-title {
+    color: #2c2c2c;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .contact-card-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .contact-detail,
+  .contact-meta {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+  .location-block,
+  .contact-line {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f3f3f3;
+    line-height: 1.3;
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
     }
-    .timetables,
-    .contact-details {
-      p span {
-        font-weight: bold;
-      }
-      p:last-child {
-        padding-bottom: 25px;
-        #e-mail {
-          word-wrap: break-word;
-        }
-      }
-      .details {
-        padding-right: 5px;
-      }
-      .font-normal {
-        font-weight: normal;
-      }
-      a:hover {
-        background-color: transparent;
-        color: #d97cb1;
-      }
-    }
+  }
+  .contact-line {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+  .location-name {
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 0.95rem;
+    margin: 0 0 1px 0;
+  }
+  .contact-label {
+    flex: 0 0 auto;
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 0.875rem;
+  }
+  a {
+    color: #2c2c2c;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline;
+    line-height: 1.3;
+  }
+  a:hover {
+    color: $accent;
   }
 }
 
-/* Responsive Desktop */
-
 @media only screen and (min-width: 769px) {
-  .hidden {
-    display: none;
+  .contacts-section {
+    margin-top: -72px;
+    padding: 0 40px 64px;
   }
-  section.contacts-timetable-section {
-    display: flex;
-    border: 5px solid #fdc8eb66;
-    margin: 30px 190px;
-    div {
-      width: 100%;
-      border-bottom: none;
-      .contacts-timetable-container {
-        border-bottom: 0;
-        .contact-details {
-          p:last-child {
-            padding-bottom: 0;
-          }
-        }
-      }
+
+  .contacts-wrapper {
+    flex-direction: row;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .contact-card {
+    flex: 1;
+    padding: 22px 28px;
+    min-height: 210px;
+
+    &:hover {
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
     }
+  }
+
+  .contact-label {
+    flex: 0 0 100px;
+    font-size: 0.85rem;
   }
 }
 </style>
