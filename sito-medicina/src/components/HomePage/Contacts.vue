@@ -12,6 +12,10 @@
             <p class="contact-detail">Via delle Calasanziane 25, 00167 Roma</p>
           </div>
           <div class="location-block">
+            <p class="location-name">Studio Medico Trionfale</p>
+            <p class="contact-detail">Via Trionfale 5367, 00132 Roma</p>
+          </div>
+          <div class="location-block">
             <p class="location-name">Mizar Studio Specialistico</p>
             <p class="contact-detail">Via Fosso dell'Osa 603/605, 00132 Roma</p>
           </div>
@@ -26,6 +30,10 @@
           <div class="contact-line">
             <span class="contact-label">Ospedale Cristo Re</span>
             <a href="tel:+3906612451">+39 066 12451</a>
+          </div>
+          <div class="contact-line">
+            <span class="contact-label">Ospedale Cristo Re</span>
+            <a href="tel:+393457958164">+39 345 7958164</a>
           </div>
           <div class="contact-line">
             <span class="contact-label">Mizar</span>
@@ -211,7 +219,7 @@ $accent: #a6d1e8;
   .contact-card {
     flex: 1;
     padding: 22px 28px;
-    min-height: 210px;
+    min-height: 250px;
 
     &:hover {
       box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);

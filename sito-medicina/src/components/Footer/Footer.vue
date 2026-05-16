@@ -9,9 +9,6 @@
             <span class="logo-surname">Polimeno</span>
           </div>
         </div>
-        <p class="copyright">
-          © {{ new Date().getFullYear() }} Dott.ssa Teresa Polimeno. Tutti i diritti riservati.
-        </p>
       </div>
       <div class="footer-col">
         <h4>INFO</h4>
