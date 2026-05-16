@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import tracyImage from '@/assets/images/jumbotron-new .jpeg'
+import tracyImage from '@/assets/images/jumbotron-new.jpeg'
 
 export default {
   name: 'Jumbotron',
