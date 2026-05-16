@@ -6,10 +6,10 @@
       @click="onMobileCardClick"
     >
       <div id="image-biography" ref="imageCol" :style="imageHeightStyle">
-        <img src="@/assets/images/foto-biography-clean.png" alt="Dr. Teresa Polimeno" />
+        <img src="@/assets/images/foto-biography-clean.png" alt="Dott.ssa Teresa Polimeno" />
       </div>
       <div id="text-biography" ref="textCol" @click.stop>
-        <h2>Dr. Teresa Polimeno</h2>
+        <h2>Dott.ssa Teresa Polimeno</h2>
         <p>
           Laureata con Lode e Menzione alla Carriera presso l'Università degli Studi di Firenze e
           Specializzata con Lode all'Università Cattolica del Sacro Cuore – Fondazione Policlinico
@@ -33,7 +33,7 @@
           ricorrente, accompagnando la donna e la coppia in un percorso di cura sensibile e
           competente.
         </p>
-        <p class="signature">Dr. Teresa Polimeno</p>
+        <p class="signature">Dott.ssa Teresa Polimeno</p>
       </div>
       <div v-if="isMobile" class="biography-mobile-hint" aria-hidden="true">
         <span>Tocca per leggere la biografia</span>

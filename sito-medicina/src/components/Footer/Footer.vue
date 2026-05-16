@@ -3,14 +3,14 @@
     <div id="content-footer">
       <div class="footer-col footer-brand">
         <div class="logo-footer">
-          <img :src="logoImg" alt="Dr. Teresa Polimeno" class="logo-img" />
+          <img :src="logoImg" alt="Dott.ssa Teresa Polimeno" class="logo-img" />
           <div class="logo-text-wrap">
             <span class="logo-name">Dott.ssa Teresa</span>
             <span class="logo-surname">Polimeno</span>
           </div>
         </div>
         <p class="copyright">
-          © {{ new Date().getFullYear() }} Dr. Teresa Polimeno. Tutti i diritti riservati.
+          © {{ new Date().getFullYear() }} Dott.ssa Teresa Polimeno. Tutti i diritti riservati.
         </p>
       </div>
       <div class="footer-col">

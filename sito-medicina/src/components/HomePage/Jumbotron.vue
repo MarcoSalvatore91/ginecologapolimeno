@@ -2,7 +2,7 @@
   <section id="jumbotron" :style="{ backgroundImage: `url(${tracyImage})` }">
     <div class="jumbotron-overlay" />
     <div id="container-image">
-      <h2 class="content-container-image">Dr. Teresa Polimeno</h2>
+      <h2 class="content-container-image">Dott.ssa Teresa Polimeno</h2>
       <h3 class="content-container-image">Specialista in Ginecologia e Ostetricia</h3>
       <p class="content-container-image tagline">
         “Ogni donna merita un luogo in cui sentirsi compresa, protetta e accompagnata nella propria

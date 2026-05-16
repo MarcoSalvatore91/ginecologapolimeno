@@ -4,9 +4,9 @@
       <div id="menu-container">
         <!-- LOGO TP + NOME -->
         <router-link id="logo-block" to="/">
-          <img :src="logoImg" alt="Dr. Teresa Polimeno" id="img-logo" />
+          <img :src="logoImg" alt="Dott.ssa Teresa Polimeno" id="img-logo" />
           <div class="logo-text-wrap">
-            <span class="logo-name">Dr. Teresa</span>
+            <span class="logo-name">Dott.ssa Teresa</span>
             <span class="logo-surname">Polimeno</span>
           </div>
         </router-link>
