@@ -46,6 +46,8 @@ export default {
   background: #f8f8f8;
 }
 
+$accent: #a6d1e8;
+
 .reviews-block {
   padding: 48px 20px 64px;
   background: #f8f8f8;
@@ -63,6 +65,28 @@ export default {
 .reviews-inner {
   max-width: 900px;
   margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .reviews-block {
+    padding: 28px 16px 56px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: $accent;
+      border-radius: 2px;
+    }
+  }
+
+  .block-title {
+    margin-bottom: 28px;
+  }
 }
 
 @media only screen and (min-width: 769px) {

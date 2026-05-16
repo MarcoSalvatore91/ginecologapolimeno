@@ -2,7 +2,11 @@
   <section id="reviews" class="reviews-wrap">
     <Carousel :wrap-around="true">
       <Slide v-for="(review, index) in reviews" :key="`${review.name}-${index}`">
-        <div class="carousel__item">
+        <div
+          class="carousel__item"
+          :class="{ 'carousel__item--clickable': isMobile }"
+          @click="isMobile ? openModal(review) : null"
+        >
           <div class="review-header">
             <h3>{{ review.name }}</h3>
             <div class="stars-row">
@@ -10,7 +14,11 @@
             </div>
           </div>
           <div class="review-text">
-            {{ review.text }}
+            {{ isMobile ? truncateWords(review.text, 28) : review.text }}
+          </div>
+          <div v-if="isMobile && review.text.split(/\s+/).length > 28" class="review-read-more">
+            <span class="review-read-more-label">Leggi tutta la recensione</span>
+            <b-icon-chevron-down class="review-read-more-icon" />
           </div>
         </div>
       </Slide>
@@ -19,23 +27,60 @@
         <Navigation />
       </template>
     </Carousel>
+
+    <!-- Modal recensione (solo mobile) -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="modalReview" class="review-modal-overlay" @click.self="closeModal">
+          <div class="review-modal">
+            <button
+              type="button"
+              class="review-modal-close"
+              aria-label="Chiudi"
+              @click="closeModal"
+            >
+              <b-icon-x-lg />
+            </button>
+            <div class="review-modal-header">
+              <h3>{{ modalReview.name }}</h3>
+              <div class="stars-row">
+                <b-icon-star-fill v-for="star in 5" :key="star" />
+              </div>
+            </div>
+            <div class="review-modal-body">
+              <p class="review-modal-text">{{ modalReview.text }}</p>
+              <div class="review-modal-scroll-hint">
+                <b-icon-chevron-down />
+                <span>Scorri per leggere</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Transition>
+    </Teleport>
   </section>
 </template>
 
 <script>
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+import { BIconStarFill, BIconChevronDown, BIconXLg } from 'bootstrap-icons-vue'
 
 export default {
   name: 'Reviews',
   components: {
     Carousel,
     Slide,
-    Navigation
+    Navigation,
+    BIconStarFill,
+    BIconChevronDown,
+    BIconXLg
   },
 
   data() {
     return {
+      modalReview: null,
+      isMobile: false,
       reviews: [
         {
           name: 'Martina',
@@ -81,16 +126,103 @@ export default {
     }
   },
 
-  methods: {}
+  mounted() {
+    this.checkMobile()
+    window.addEventListener('resize', this.checkMobile)
+  },
+
+  beforeUnmount() {
+    window.removeEventListener('resize', this.checkMobile)
+  },
+
+  methods: {
+    checkMobile() {
+      this.isMobile = window.innerWidth <= 480
+    },
+    truncateWords(text, limit) {
+      if (!text) return ''
+      const words = text.trim().split(/\s+/)
+      if (words.length <= limit) return text
+      return words.slice(0, limit).join(' ') + '…'
+    },
+    openModal(review) {
+      this.modalReview = review
+      document.body.style.overflow = 'hidden'
+    },
+    closeModal() {
+      this.modalReview = null
+      document.body.style.overflow = ''
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
-$accent: #d97cb1;
+$accent: #a6d1e8;
 
 .reviews-wrap {
   position: relative;
   padding: 0 28px;
+}
+
+.review-read-more {
+  display: none;
+}
+@media (max-width: 480px) {
+  .review-read-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed rgba(0, 0, 0, 0.1);
+    color: $accent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .review-read-more-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-wrap {
+    padding: 0 12px;
+  }
+  #reviews :deep(.carousel__prev) {
+    left: 4px;
+  }
+  #reviews :deep(.carousel__next) {
+    right: 4px;
+  }
+  #reviews .carousel__item {
+    padding: 28px 18px 24px;
+    min-height: 200px;
+    font-size: 1rem;
+  }
+  #reviews .carousel__item--clickable {
+    cursor: pointer;
+  }
+  #reviews .review-text {
+    font-size: 1rem;
+    line-height: 1.65;
+    padding-top: 16px;
+  }
+  #reviews .review-header h3 {
+    font-size: 1.15rem;
+  }
+  #reviews :deep(.carousel__prev),
+  #reviews :deep(.carousel__next) {
+    width: 48px;
+    height: 48px;
+  }
+  #reviews :deep(.carousel__slide) {
+    padding: 10px 4px;
+  }
 }
 
 #reviews :deep(.carousel__prev) {
@@ -174,14 +306,128 @@ $accent: #d97cb1;
     width: 46px;
     height: 46px;
     border-radius: 50%;
-    transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 0 2px 12px rgba(217, 124, 177, 0.35);
+    transition:
+      background 0.25s ease,
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+    box-shadow: 0 2px 12px rgba(188, 141, 183, 0.35);
   }
   .carousel__prev:hover,
   .carousel__next:hover {
     background: darken($accent, 10%);
     transform: scale(1.08);
-    box-shadow: 0 4px 16px rgba(217, 124, 177, 0.4);
+    box-shadow: 0 4px 16px rgba(188, 141, 183, 0.4);
   }
+}
+
+/* Modal recensione (mobile) */
+.review-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.review-modal {
+  background: white;
+  border-radius: 16px;
+  max-width: 420px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.review-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2c2c2c;
+  z-index: 2;
+}
+.review-modal-close :deep(svg) {
+  width: 20px;
+  height: 20px;
+}
+.review-modal-header {
+  padding: 24px 24px 16px;
+  border-bottom: 2px solid rgba($accent, 0.2);
+  flex-shrink: 0;
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $accent;
+    margin: 0 0 10px 0;
+  }
+}
+.review-modal-header .stars-row {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+}
+.review-modal-header .stars-row :deep(svg) {
+  width: 18px;
+  height: 18px;
+  color: $accent;
+  fill: $accent;
+}
+.review-modal-body {
+  padding: 20px 24px 24px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  min-height: 0;
+}
+.review-modal-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #444;
+  margin: 0 0 20px 0;
+  white-space: pre-wrap;
+}
+.review-modal-scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #888;
+  padding: 8px 0;
+  flex-shrink: 0;
+}
+.review-modal-scroll-hint :deep(svg) {
+  width: 16px;
+  height: 16px;
+}
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.25s ease;
+}
+.modal-enter-active .review-modal,
+.modal-leave-active .review-modal {
+  transition: transform 0.25s ease;
+}
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+.modal-enter-from .review-modal,
+.modal-leave-to .review-modal {
+  transform: scale(0.95);
 }
 </style>

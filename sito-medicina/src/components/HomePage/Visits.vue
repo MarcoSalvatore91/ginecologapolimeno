@@ -52,17 +52,17 @@ export default {
         {
           title: 'Visita Ostetrica',
           content:
-            'Un incontro dedicato alla futura mamma per valutare l\'andamento della gravidanza, controllare pressione, peso, sintomi e fornire consigli personalizzati per ogni trimestre.',
+            "Un incontro dedicato alla futura mamma per valutare l'andamento della gravidanza, controllare pressione, peso, sintomi e fornire consigli personalizzati per ogni trimestre.",
           icon: icons.BIconCalendarHeartFill
         },
         {
-          title: 'Visita Ostetrica e Ecografia Pelvica',
+          title: 'Ecografia Pelvica',
           content:
             'Esame ecografico immediato e rapido, eseguito per via sovrapubica e/o transvaginale, che permette di valutare con precisione utero e ovaie e identificare cisti, fibromi o altre alterazioni in modo accurato.',
           icon: icons.BIconDisplayFill
         },
         {
-          title: 'Visita Ostetrica e Ecografia 3D',
+          title: 'Ecografia Ostetrica',
           content:
             'Monitoraggio ecografico della gravidanza per seguire la crescita e il benessere del bambino, con ecografia anche in 3D, offrendo informazioni precise e tranquillità alla futura mamma.',
           icon: icons.BIconPersonBadgeFill
@@ -82,12 +82,30 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$accent: #d97cb1;
+$accent: #a6d1e8;
 
 #visits {
   padding: 32px 20px 72px;
   max-width: 1400px;
   margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  #visits {
+    padding: 28px 16px 56px;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: $accent;
+      border-radius: 2px;
+    }
+  }
 }
 
 .section-title {
@@ -97,6 +115,24 @@ $accent: #d97cb1;
   color: #2c2c2c;
   margin-bottom: 40px;
   letter-spacing: -0.02em;
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.45rem;
+    margin-bottom: 28px;
+    padding: 0 8px;
+  }
+  .visit-card {
+    padding: 28px 20px;
+  }
+  .visit-title {
+    font-size: 1.05rem;
+  }
+  .visit-text {
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
 }
 
 .visits-grid {
@@ -111,7 +147,9 @@ $accent: #d97cb1;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   padding: 36px 28px;
   text-align: center;
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
   display: flex;
   flex-direction: column;
   align-items: center;

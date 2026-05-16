@@ -3,8 +3,8 @@
     <div class="contact-main-wrap">
       <div class="contact-info">
         <p class="contact-intro">
-          Per ricevere maggiori informazioni sui prodotti e servizi, non esitare a scrivermi via mail
-          o compila il form di contatto. Sarete ricontattati al più presto.
+          Per ricevere maggiori informazioni sui prodotti e servizi, non esitare a scrivermi via
+          mail o compila il form di contatto. Sarete ricontattati al più presto.
         </p>
         <p class="contact-oppure">oppure</p>
         <p class="contact-subtitle">Prenota tramite uno dei seguenti contatti:</p>
@@ -125,18 +125,13 @@ export default {
       const templateParams = { name, email, message }
 
       try {
-        await emailjs.send(
-          EMAILJS_SERVICE,
-          EMAILJS_TEMPLATE,
-          templateParams,
-          EMAILJS_PUBLIC_KEY
-        )
+        await emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, templateParams, EMAILJS_PUBLIC_KEY)
         this.statusMessage = 'Messaggio inviato con successo. Sarai ricontattato al più presto.'
         this.statusType = 'success'
         this.formData = { name: '', email: '', message: '' }
       } catch (error) {
         this.statusMessage =
-          "Impossibile inviare il messaggio. Controlla la connessione o riprova più tardi."
+          'Impossibile inviare il messaggio. Controlla la connessione o riprova più tardi.'
         this.statusType = 'error'
         console.error('EmailJS error:', error)
         await this.sendErrorNotification(error, templateParams)
@@ -149,7 +144,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$accent: #d97cb1;
+$accent: #a6d1e8;
 
 #contact-main-section {
   padding: 40px 20px 64px;
@@ -228,7 +223,9 @@ $accent: #d97cb1;
     font-size: 1rem;
     font-family: inherit;
     background: #fff;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
     box-sizing: border-box;
   }
   input:focus,
@@ -286,7 +283,9 @@ $accent: #d97cb1;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.2s, opacity 0.2s;
+    transition:
+      background 0.2s,
+      opacity 0.2s;
     align-self: flex-start;
   }
   .btn-invia:hover:not(:disabled) {

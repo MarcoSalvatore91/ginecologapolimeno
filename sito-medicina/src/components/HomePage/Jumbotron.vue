@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import tracyImage from '@/assets/images/jumbotron-photo.jpeg'
+import tracyImage from '@/assets/images/jumbotron-new .jpeg'
 
 export default {
   name: 'Jumbotron',
@@ -60,6 +60,24 @@ export default {
   z-index: 1;
   padding: 40px 24px;
   max-width: 700px;
+}
+
+@media (max-width: 480px) {
+  #jumbotron {
+    min-height: 280px;
+  }
+  #container-image {
+    padding: 32px 16px;
+  }
+  .content-container-image:first-child {
+    font-size: 1.5rem;
+  }
+  .content-container-image:nth-child(2) {
+    font-size: 1rem;
+  }
+  .content-container-image.tagline {
+    font-size: 0.9rem;
+  }
 }
 
 .content-container-image {

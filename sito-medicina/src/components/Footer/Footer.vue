@@ -3,10 +3,15 @@
     <div id="content-footer">
       <div class="footer-col footer-brand">
         <div class="logo-footer">
-          <span class="logo-circle">TP</span>
-          <span class="logo-name">Dr. Teresa Polimeno</span>
+          <img :src="logoImg" alt="Dr. Teresa Polimeno" class="logo-img" />
+          <div class="logo-text-wrap">
+            <span class="logo-name">Dott.ssa Teresa</span>
+            <span class="logo-surname">Polimeno</span>
+          </div>
         </div>
-        <p class="copyright">© {{ new Date().getFullYear() }} Dr. Teresa Polimeno. Tutti i diritti riservati.</p>
+        <p class="copyright">
+          © {{ new Date().getFullYear() }} Dr. Teresa Polimeno. Tutti i diritti riservati.
+        </p>
       </div>
       <div class="footer-col">
         <h4>INFO</h4>
@@ -17,7 +22,9 @@
       </div>
       <div class="footer-col">
         <h4>SERVIZI</h4>
-        <p>Visita ginecologica, ecografia pelvica e ostetrica, gravidanza, test combinato e NIPT.</p>
+        <p>
+          Visita ginecologica, ecografia pelvica e ostetrica, gravidanza, test combinato e NIPT.
+        </p>
       </div>
       <div class="footer-col">
         <h4>CONTATTI</h4>
@@ -40,11 +47,15 @@
 </template>
 
 <script>
+import logoImg from '@/assets/images/logo.svg'
+
 export default {
   name: 'Footer',
 
   data() {
-    return {}
+    return {
+      logoImg
+    }
   },
 
   methods: {}
@@ -52,7 +63,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$accent: #d97cb1;
+$accent: #a6d1e8;
 
 #footer {
   margin-top: 0;
@@ -101,22 +112,30 @@ $accent: #d97cb1;
     gap: 12px;
     margin-bottom: 14px;
   }
-  .logo-circle {
-    width: 42px;
+  .logo-img {
     height: 42px;
-    border-radius: 50%;
-    background: $accent;
-    color: white;
-    font-weight: bold;
-    font-size: 15px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    width: auto;
+    display: block;
+    flex-shrink: 0;
+  }
+  .logo-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    line-height: 1.2;
   }
   .logo-name {
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #fff;
+    font-style: italic;
+    color: $accent;
+  }
+  .logo-surname {
     font-size: 1.05rem;
+    font-weight: 600;
+    font-style: italic;
+    color: $accent;
+    letter-spacing: 0.02em;
   }
   .copyright {
     font-size: 0.8rem;
@@ -144,6 +163,20 @@ $accent: #d97cb1;
   .social-icon:hover {
     background: $accent;
     color: white;
+  }
+}
+
+@media (max-width: 480px) {
+  #footer {
+    padding: 40px 16px 32px;
+  }
+  .social-links .social-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .footer-col p,
+  .footer-col a {
+    font-size: 0.9375rem;
   }
 }
 

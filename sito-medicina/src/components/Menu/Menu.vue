@@ -4,8 +4,11 @@
       <div id="menu-container">
         <!-- LOGO TP + NOME -->
         <router-link id="logo-block" to="/">
-          <div id="img-logo-circle">TP</div>
-          <span id="logo-text">Dr. Teresa Polimeno</span>
+          <img :src="logoImg" alt="Dr. Teresa Polimeno" id="img-logo" />
+          <div class="logo-text-wrap">
+            <span class="logo-name">Dr. Teresa</span>
+            <span class="logo-surname">Polimeno</span>
+          </div>
         </router-link>
 
         <!-- HAMBURGER MOBILE -->
@@ -41,12 +44,15 @@
 </template>
 
 <script>
+import logoImg from '@/assets/images/logo.svg'
+
 export default {
   name: 'Menu',
 
   data() {
     return {
-      menuOpen: false
+      menuOpen: false,
+      logoImg
     }
   },
 
@@ -59,7 +65,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$accent: #d97cb1;
+$accent: #a6d1e8;
 
 #desktop-view {
   display: none;
@@ -69,6 +75,11 @@ $accent: #d97cb1;
   position: sticky;
   top: 0;
   z-index: 100;
+
+  header {
+    background: #f5f5f5;
+    border-bottom: 3px solid $accent;
+  }
 
   #menu-container {
     display: flex;
@@ -82,24 +93,34 @@ $accent: #d97cb1;
       text-decoration: none;
       color: #2c2c2c;
     }
-    #img-logo-circle {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: $accent;
-      color: white;
-      font-weight: bold;
-      font-size: 17px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    #img-logo {
+      height: 42px;
+      width: auto;
+      display: block;
+      flex-shrink: 0;
     }
-    #logo-text {
+    .logo-text-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1.2;
+    }
+    .logo-name {
+      font-size: 1rem;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-style: italic;
+      color: $accent;
+      letter-spacing: 0.01em;
+    }
+    .logo-surname {
+      font-size: 1.05rem;
+      font-weight: 600;
+      font-style: italic;
+      color: $accent;
+      letter-spacing: 0.02em;
     }
     #logo-block:hover {
-      #img-logo-circle {
+      #img-logo {
         opacity: 0.9;
       }
     }
@@ -136,13 +157,29 @@ $accent: #d97cb1;
     }
   }
 
+  @media (max-width: 768px) {
+    header {
+      padding: 4px 0;
+    }
+    #menu-container {
+      min-height: 56px;
+      padding: 12px 20px;
+    }
+    #menu-container .logo-text-wrap {
+      display: none;
+    }
+    #menu-container #img-logo {
+      height: 34px;
+    }
+  }
+
   .dropdown {
     height: 0px;
     background-color: #fafafa;
     transition: height 0.2s ease;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-around;
     overflow: hidden;
     position: fixed;
@@ -156,7 +193,13 @@ $accent: #d97cb1;
     .navlistitem a {
       color: black;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 1.05rem;
+      padding: 16px 24px;
+      min-height: 48px;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -180,10 +223,11 @@ $accent: #d97cb1;
     #menu-container {
       width: 100%;
       max-width: none;
-      #logo-text {
+      .logo-name {
         font-size: 1.05rem;
-        font-weight: 600;
-        color: #2c2c2c;
+      }
+      .logo-surname {
+        font-size: 1.15rem;
       }
       #desktop-view {
         display: flex;
@@ -193,17 +237,19 @@ $accent: #d97cb1;
         .nav-link {
           text-decoration: none;
           text-transform: uppercase;
-          color: #2c2c2c;
+          color: $accent;
           font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.03em;
           padding: 10px 20px;
           border-radius: 6px;
-          transition: color 0.2s, background 0.2s;
+          transition:
+            color 0.2s,
+            background 0.2s;
         }
         .nav-link:hover {
-          color: $accent;
-          background: rgba(217, 124, 177, 0.06);
+          color: darken($accent, 12%);
+          background: rgba(188, 141, 183, 0.1);
         }
         #btn-prenota {
           background: $accent;
@@ -216,13 +262,15 @@ $accent: #d97cb1;
           padding: 14px 28px;
           border-radius: 10px;
           margin-left: 12px;
-          transition: background 0.2s, transform 0.2s;
-          box-shadow: 0 2px 8px rgba(217, 124, 177, 0.35);
+          transition:
+            background 0.2s,
+            transform 0.2s;
+          box-shadow: 0 2px 8px rgba(188, 141, 183, 0.35);
         }
         #btn-prenota:hover {
-          background: #c46a9d;
+          background: darken($accent, 8%);
           transform: translateY(-1px);
-          box-shadow: 0 4px 12px rgba(217, 124, 177, 0.4);
+          box-shadow: 0 4px 12px rgba(188, 141, 183, 0.4);
         }
       }
     }

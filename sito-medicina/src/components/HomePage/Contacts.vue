@@ -68,13 +68,29 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$accent: #d97cb1;
+$accent: #a6d1e8;
 
 .contacts-section {
   padding: 0 20px 48px;
   margin-top: -52px;
   position: relative;
   z-index: 2;
+}
+
+@media (max-width: 480px) {
+  .contacts-section {
+    padding: 0 16px 40px;
+  }
+  .contact-card {
+    padding: 20px 18px;
+    min-height: auto;
+  }
+  .contact-line {
+    min-height: 44px;
+  }
+  .contact-line a {
+    padding: 4px 0;
+  }
 }
 
 .contacts-wrapper {

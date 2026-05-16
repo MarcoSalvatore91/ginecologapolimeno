@@ -1,7 +1,9 @@
 <template>
   <header id="contact-header">
     <div class="contact-header-inner">
-      <h1 class="contact-header-title">Prenota una visita o contattaci per avere maggiori informazioni</h1>
+      <h1 class="contact-header-title">
+        Prenota una visita o contattaci per avere maggiori informazioni
+      </h1>
     </div>
   </header>
 </template>
@@ -15,7 +17,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-$accent: #d97cb1;
+$accent: #a6d1e8;
 
 #contact-header {
   display: flex;
@@ -23,7 +25,7 @@ $accent: #d97cb1;
   align-items: center;
   min-height: 180px;
   padding: 48px 24px;
-  background: rgba($accent, 0.08);
+  background: rgba($accent, 0.22);
 }
 
 .contact-header-inner {
