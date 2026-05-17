@@ -32,8 +32,8 @@
             <a href="tel:+3906612451">+39 066 12451</a>
           </div>
           <div class="contact-line">
-            <span class="contact-label">Ospedale Cristo Re</span>
-            <a href="tel:+393457958164">+39 345 7958164</a>
+            <span class="contact-label">Studio Medico Trionfale</span>
+            <a href="tel:3457958164">+39 345 7958164</a>
           </div>
           <div class="contact-line">
             <span class="contact-label">Mizar</span>
@@ -207,7 +207,7 @@ $accent: #a6d1e8;
 @media only screen and (min-width: 769px) {
   .contacts-section {
     margin-top: -72px;
-    padding: 0 40px 64px;
+    padding: 0 40px 35px;
   }
 
   .contacts-wrapper {

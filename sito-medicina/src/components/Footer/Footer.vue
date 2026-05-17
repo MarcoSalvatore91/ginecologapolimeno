@@ -13,8 +13,8 @@
       <div class="footer-col">
         <h4>INFO</h4>
         <p>
-          Specialista in Ginecologia e Ostetricia. Ricevo presso Ospedale Cristo Re e Mizar Medicina
-          Specialistica a Roma.
+          Specialista in Ginecologia e Ostetricia. Ricevo presso Ospedale Cristo Re, Studio Medico
+          Trionfale e Mizar Medicina Specialistica a Roma.
         </p>
       </div>
       <div class="footer-col">
@@ -26,17 +26,19 @@
       <div class="footer-col">
         <h4>CONTATTI</h4>
         <p>
-          <a href="https://ospedalecristore.it" target="_blank" rel="noopener noreferrer"
-            >Ospedale Cristo Re</a
+          <a href="tel:3514959696">Telefono - 351 495 9696</a> ·
+          <br />
+          <a class="contact-email" href="mailto:teresapolimeno.ginecologia@outlook.it"
+            >E-mail - teresapolimeno.ginecologia@outlook.it</a
           >
         </p>
-        <p>
-          <a href="tel:3514959696">351 495 9696</a> ·
-          <a href="mailto:teresapolimeno.ginecologia@outlook.it">Email</a>
-        </p>
         <div class="social-links">
-          <a href="#" aria-label="LinkedIn" class="social-icon">in</a>
-          <a href="#" aria-label="Instagram" class="social-icon">ig</a>
+          <a
+            href="https://www.linkedin.com/in/teresa-polimeno-751176131/"
+            aria-label="LinkedIn"
+            class="social-icon"
+            >in</a
+          >
         </div>
       </div>
     </div>
@@ -186,6 +188,10 @@ $accent: #a6d1e8;
 @media only screen and (min-width: 960px) {
   #footer {
     padding: 64px 40px 48px;
+  }
+
+  .contact-email {
+    white-space: nowrap;
   }
 
   #content-footer {

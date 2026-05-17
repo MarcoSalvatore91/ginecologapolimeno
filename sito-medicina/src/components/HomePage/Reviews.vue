@@ -226,10 +226,10 @@ $accent: #a6d1e8;
 }
 
 #reviews :deep(.carousel__prev) {
-  left: 20px;
+  left: -40px;
 }
 #reviews :deep(.carousel__next) {
-  right: 20px;
+  right: -40px;
 }
 
 #reviews {
