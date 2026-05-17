@@ -85,22 +85,6 @@ $accent: #a6d1e8;
   z-index: 2;
 }
 
-@media (max-width: 480px) {
-  .contacts-section {
-    padding: 0 16px 40px;
-  }
-  .contact-card {
-    padding: 20px 18px;
-    min-height: auto;
-  }
-  .contact-line {
-    min-height: 44px;
-  }
-  .contact-line a {
-    padding: 4px 0;
-  }
-}
-
 .contacts-wrapper {
   max-width: 1100px;
   margin: 0 auto;
@@ -229,6 +213,26 @@ $accent: #a6d1e8;
   .contact-label {
     flex: 0 0 100px;
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts-section {
+    padding: 0 16px 40px;
+    margin-top: -28px;
+  }
+  .contact-card {
+    padding: 20px 18px;
+    min-height: auto;
+    a {
+      font-size: 0.8rem;
+    }
+  }
+  .contact-line {
+    min-height: 44px;
+  }
+  .contact-line a {
+    padding: 4px 0;
   }
 }
 </style>
