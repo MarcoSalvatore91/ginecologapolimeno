@@ -13,8 +13,8 @@
       <div class="footer-col">
         <h4>INFO</h4>
         <p>
-          Specialista in Ginecologia e Ostetricia. Ricevo presso Ospedale Cristo Re, Studio Medico
-          Trionfale e Mizar Medicina Specialistica a Roma.
+          Specialista in Ginecologia e Ostetricia. Ricevo presso Ospedale Cristo Re e Studio Medico
+          Trionfale a Roma.
         </p>
       </div>
       <div class="footer-col">

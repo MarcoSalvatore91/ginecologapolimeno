@@ -15,10 +15,6 @@
             <p class="location-name">Studio Medico Trionfale</p>
             <p class="contact-detail">Via Trionfale 5367, 00132 Roma</p>
           </div>
-          <div class="location-block">
-            <p class="location-name">Mizar Studio Specialistico</p>
-            <p class="contact-detail">Via Fosso dell'Osa 603/605, 00132 Roma</p>
-          </div>
         </div>
       </div>
       <div class="contact-card">
@@ -34,10 +30,6 @@
           <div class="contact-line">
             <span class="contact-label">Studio Medico Trionfale</span>
             <a href="tel:3457958164">+39 345 7958164</a>
-          </div>
-          <div class="contact-line">
-            <span class="contact-label">Mizar</span>
-            <a href="tel:+390659879859">+39 065 9879859</a>
           </div>
         </div>
       </div>

@@ -30,8 +30,8 @@
         </p>
         <p>
           Completa la mia attività l'esperienza nella gestione di sterilità di coppia e abortività
-          ricorrente, accompagnando la donna e la coppia in un percorso di cura sensibile e
-          competente.
+          ricorrente, accompagnando la donna e la coppia in un percorso di cura attento e
+          personalizzato.
         </p>
         <p class="signature">Dott.ssa Teresa Polimeno</p>
       </div>

@@ -83,6 +83,11 @@ export default {
       isMobile: false,
       reviews: [
         {
+          name: 'Eleonora',
+          stars: 5,
+          text: 'A volte le persone più importanti arrivano nella nostra vita quasi per caso, ed è proprio così che ho conosciuto e scelto la mia ginecologa. Una scelta fatta senza sapere quanto sarebbe diventata preziosa per me. Con il tempo ho scoperto non solo una professionista eccezionale, preparata, scrupolosa e attenta, ma soprattutto una persona capace di ascoltare davvero, di comprendere e di trasmettere quella serenità e quella fiducia di cui, in momenti così delicati, si ha un bisogno enorme. Con lei mi sono sempre sentita accolta, capita e mai giudicata. Ha un modo speciale di prendersi cura delle sue pazienti, con una sensibilità e un’umanità che vanno ben oltre la sua straordinaria competenza. È talmente brava nel suo lavoro e talmente speciale come persona che, alla fine, non puoi fare a meno di affezionarti a lei e di volerle bene. Sono davvero grata al caso per avermela fatta incontrare. Oggi non sceglierei nessun’altra.'
+        },
+        {
           name: 'Martina',
           stars: 5,
           text: 'Consiglio vivamente la Dott.ssa Polimeno! È una ginecologa eccezionale che unisce una professionalità impeccabile a una rara sensibilità umana. Fin dalla prima visita, mi sono sentita completamente a mio agio. È estremamente competente, spiega ogni aspetto in modo chiaro e risponde a qualsiasi domanda con pazienza e accuratezza, dimostrando grande preparazione e attenzione ai dettagli. La sua empatia è ciò che la distingue: è un medico che sa ascoltare davvero, creando un ambiente sereno e di totale fiducia, fondamentale in un ambito così delicato. Inoltre, la sua disponibilità è ammirevole. È sempre raggiungibile e pronta a fornire supporto o chiarimenti, il che è un enorme sollievo e dimostra la sua dedizione alle pazienti.'
